@@ -1,30 +1,9 @@
 #!/bin/sh
 
-JudgeVimPath(){
-    if [ ! -d "~/.vim" ]; then
-        filename=`date '+%Y%m%d'`
-        echo $filename
-        mv -f ~/.vim ~/.vim_old$filename
-    fi
-    mkdir ~/.config/
-}
-
-ConfigVim(){
-    git clone https://github.com/formateddd/vimrc ~/.vim
-
-    cp ~/.vim/config/vimrc ~/.vimrc
-    #cp ~/.vim/config/flake8 ~/.flake8
-
-    vim +PlugInstall +qall
-    echo "vim plugins install success"
-
-    # default python virtualenv
-    pip install black jedi -i https://pypi.tuna.tsinghua.edu.cn/simple
-    echo "Installed the Vim configuration successfully, Enjoy it ! :-)"
-}
-
 JudgeNvimPath(){
-    [[ -f ~/.config ]] || mkdir ~/.config
+    if [ -f ~/.config ]; then
+        mkdir ~/.config
+    fi
     if [ ! -d "~/.config/nvim" ]; then
         filename=`date '+%Y%m%d'`
         echo $filename
@@ -43,7 +22,7 @@ ConfigNvim(){
     echo "vim plugins install success"
 
     # default python virtualenv
-    pip install neovim pynvim black jedi -i https://pypi.tuna.tsinghua.edu.cn/simple
+    pip install neovim black -i https://pypi.tuna.tsinghua.edu.cn/simple
     echo "while copy Chinese , export LC_ALL="zh_CN.UTF-8" "
     echo "Installed the Vim configuration successfully, Enjoy it ! :-)"
 }

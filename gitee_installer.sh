@@ -1,7 +1,10 @@
 #!/bin/sh
 
 JudgeNvimPath(){
-    [[ -f ~/.config ]] || mkdir ~/.config
+    if [ -f ~/.config ]; then
+        mkdir ~/.config
+    fi
+
     if [ ! -d "~/.config/nvim" ]; then
         filename=`date '+%Y%m%d'`
         echo $filename
