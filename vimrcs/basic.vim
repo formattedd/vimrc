@@ -24,7 +24,8 @@ if (has('termguicolors'))
 endif
 
 
-colorscheme monokai
+colorscheme material
+" colorscheme monokai
 "https://github.com/flazz/vim-colorschemes
 set background=dark
 
