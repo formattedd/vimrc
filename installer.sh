@@ -1,7 +1,7 @@
 #!/bin/sh
 
 JudgeNvimPath(){
-    if [ -f ~/.config ]; then
+    if [ ! -f ~/.config ]; then
         mkdir ~/.config
     fi
     if [ ! -d "~/.config/nvim" ]; then
