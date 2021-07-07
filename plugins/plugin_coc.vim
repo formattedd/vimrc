@@ -7,7 +7,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
 let g:coc_disable_startup_warning=1
 let g:coc_global_extensions = [
             \ 'coc-translator',
-            \ 'coc-fzf-preview',
             \ 'coc-html',
             \ 'coc-css',
             \ 'coc-cssmodules',
@@ -18,6 +17,7 @@ let g:coc_global_extensions = [
             \ 'coc-marketplace',
             \ 'coc-explorer']
 
+            " \ 'coc-fzf-preview',
             " \ 'coc-python',
             " \ 'coc-go',
             " \ 'coc-snippets',
