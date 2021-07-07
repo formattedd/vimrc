@@ -34,7 +34,7 @@ endfunction
 nmap <Space>t :CocCommand translator.popup <CR>
 " nmap gd <Plug>(coc-definition)
 " nmap <silent> gr <Plug>(coc-references)
-nmap <Space>f :call CocAction('format')<CR>
+" nmap <Space>f :call CocAction('format')<CR>
 
 " Use K to show documentation in preview window.
 " nnoremap <silent> K :call <SID>show_documentation()<CR>
