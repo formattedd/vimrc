@@ -4,6 +4,10 @@ JudgeNvimPath(){
     if [ ! -f ~/.config ]; then
         mkdir ~/.config
     fi
+
+    # 语法检查
+    cp ./pycodestyle ~/.config/pycodestyle
+
     if [ ! -d "~/.config/nvim" ]; then
         filename=`date '+%Y%m%d'`
         echo $filename
