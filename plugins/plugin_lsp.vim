@@ -63,8 +63,6 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-let g:asyncomplete_auto_popup = 1
-
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -86,12 +84,12 @@ function! s:on_lsp_buffer_enabled() abort
     let g:lsp_document_highlight_enabled = 1
     let g:lsp_diagnostics_enabled = 1
     let g:lsp_format_sync_timeout = 1000
+    let g:asyncomplete_auto_popup = 1
     autocmd! BufWritePre *.go,*.py call execute('LspDocumentFormatSync')
     " autocmd BufWritePre <buffer> LspDocumentFormatSync
 
     " refer to doc to add more commands
 endfunction
-
 
 augroup lsp_install
     au!
