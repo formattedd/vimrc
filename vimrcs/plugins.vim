@@ -18,7 +18,15 @@ call plug#begin('~/.config/nvim/plugged')
     let g:airline_theme='molokai'
 
 
-    Plug 'Chiel92/vim-autoformat'
+    " Plug 'Chiel92/vim-autoformat'
+    Plug 'sbdchd/neoformat'
+    nmap ff :Neoformat<CR>
+    augroup fmt
+      autocmd!
+      autocmd BufWritePre * undojoin | Neoformat
+    augroup END
+
+
     Plug 'jiangmiao/auto-pairs'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
