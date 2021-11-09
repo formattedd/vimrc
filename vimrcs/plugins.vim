@@ -20,11 +20,12 @@ call plug#begin('~/.config/nvim/plugged')
 
     " Plug 'Chiel92/vim-autoformat'
     Plug 'sbdchd/neoformat'
-    nmap ff :Neoformat<CR>
+    let g:neoformat_enabled_python = ['black']
     augroup fmt
       autocmd!
       autocmd BufWritePre * undojoin | Neoformat
     augroup END
+    nmap ff :Neoformat :w <CR>
 
 
     Plug 'jiangmiao/auto-pairs'
