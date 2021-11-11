@@ -25,7 +25,7 @@ call plug#begin('~/.config/nvim/plugged')
       autocmd!
       autocmd BufWritePre * undojoin | Neoformat
     augroup END
-    nmap ff :Neoformat :w <CR>
+    nmap ff :Neoformat <CR> :w! <CR>
 
 
     Plug 'jiangmiao/auto-pairs'
