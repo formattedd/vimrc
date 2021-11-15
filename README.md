@@ -1,5 +1,8 @@
 配合 https://github.com/formattedd/dotfiles 食用
 
+![alt ](./img/tty.gif)
+
+
 <!-- #### my vim/macvim/neovim config -->
 <!--  -->
 <!-- > install vim/macvim/neovim, git, pip -->
