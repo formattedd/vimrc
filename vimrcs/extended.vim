@@ -9,6 +9,7 @@
 
 " nmap <S-V> :vs<CR>
 nmap q :q<CR>
+nmap W :w<CR>
 nmap <Space>v :vs<CR>
 nmap <Space>s :sp<CR>
 map <Space>r <Esc> :call RunFile()<cr>

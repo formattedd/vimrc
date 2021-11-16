@@ -25,7 +25,7 @@ call plug#begin('~/.config/nvim/plugged')
       autocmd!
       autocmd BufWritePre * undojoin | Neoformat
     augroup END
-    nmap ff :Neoformat <CR> :w! <CR>
+    nmap fn :Neoformat <CR> :w! <CR>
 
 
     Plug 'jiangmiao/auto-pairs'
@@ -97,6 +97,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'dense-analysis/ale'
     let b:ale_linters = ['mypy']
     " let b:ale_linters = ['flake8', 'pylint']
+
+
+    Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
 
     for f in glob('~/.config/nvim/plugins/plugin_*.vim', 0, 1)
