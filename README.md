@@ -2,7 +2,7 @@
 
 ### example
 <!-- ![sample](./img/tty.gif) -->
-<img src="./img/tty.gif" width="500" />
+<img src="./img/tty.gif" width="1000" />
 
 ### 不能连接GitHub时
 ```sh
