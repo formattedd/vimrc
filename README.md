@@ -1,6 +1,7 @@
-配合 https://github.com/formattedd/dotfiles 食用
+### 配合 https://github.com/formattedd/dotfiles 食用
 
-![alt ](./img/tty.gif | width=100)
+### example
+![alt ](./img/tty.gif width=100)
 
 
 ### 不能连接GitHub时
