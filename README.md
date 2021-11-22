@@ -1,8 +1,7 @@
 ### 配合 https://github.com/formattedd/dotfiles 食用
 
 ### example
-![alt ](https://github.com/lesssound/vimrc/blob/main/img/tty.gif?raw=true width=100)
-
+![sample](./img/tty.gif width=100)
 
 
 ### 不能连接GitHub时
