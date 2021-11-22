@@ -1,7 +1,14 @@
 配合 https://github.com/formattedd/dotfiles 食用
 
-![alt ](./img/tty.gif)
+![alt ](./img/tty.gif | width=100)
 
+
+### 不能连接GitHub时
+```sh
+vi vimrcs/plugins.vim
+vi plugins/plugin_lsp.vim
+%s/Plug\ \'/Plug \ \'https\:\/\/hub\.fastgit\.org\//g
+```
 
 <!-- #### my vim/macvim/neovim config -->
 <!--  -->
