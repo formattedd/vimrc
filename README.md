@@ -1,8 +1,8 @@
 ### 配合 https://github.com/formattedd/dotfiles 食用
 
 ### example
-![sample](./img/tty.gif width=100)
-
+<!-- ![sample](./img/tty.gif) -->
+<img src="./img/tty.gif" width="100"/>
 
 ### 不能连接GitHub时
 ```sh
