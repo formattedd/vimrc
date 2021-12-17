@@ -98,14 +98,13 @@ call plug#begin('~/.config/nvim/plugged')
     let b:ale_linters = ['mypy']
     " let b:ale_linters = ['flake8', 'pylint']
 
-
-    Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
-
-
     for f in glob('~/.config/nvim/plugins/plugin_*.vim', 0, 1)
         execute 'source' f
     endfor
 
+
+
+" Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } to much bug
 " Plug 'tpope/vim-fugitive'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'leafgarland/typescript-vim'
