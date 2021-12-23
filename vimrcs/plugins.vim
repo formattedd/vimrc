@@ -106,9 +106,8 @@ call plug#begin('~/.config/nvim/plugged')
         execute 'source' f
     endfor
 
+    Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
-
-" Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } to much bug
 " Plug 'tpope/vim-fugitive'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'leafgarland/typescript-vim'
@@ -139,4 +138,25 @@ let g:onedark_italic_comment = v:true
 let g:onedark_style = 'darker'
 let g:onedark_transparent_background = 'true'
 let g:onedark_italic_comment = 'true'
-colorscheme onedark
+
+
+if !empty(glob("~/.config/nvim/plugged/onedark.nvim/"))
+    colorscheme onedark
+endif
+
+
+" if filereadable(expand("$HOME/.config/nvim/plugged/wilder.nvim/autoload/wilder.vim"))
+if !empty(glob("~/.config/nvim/plugged/wilder.nvim/"))
+    call wilder#setup({'modes': [':', '/', '?']})
+
+    call wilder#set_option('pipeline', [
+          \   wilder#branch(
+          \     wilder#cmdline_pipeline(),
+          \     wilder#search_pipeline(),
+          \   ),
+          \ ])
+
+    call wilder#set_option('renderer', wilder#wildmenu_renderer({
+          \ 'highlighter': wilder#basic_highlighter(),
+          \ }))
+endif
