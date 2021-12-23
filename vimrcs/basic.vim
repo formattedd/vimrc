@@ -24,11 +24,10 @@ if (has('termguicolors'))
 endif
 
 
-" colorscheme material
-colorscheme onedark
-" colorscheme monokai
 "https://github.com/flazz/vim-colorschemes
 set background=dark
+" colorscheme material
+colorscheme monokai
 
 " Set extra options when running in GUI mode
 if has("gui_running")

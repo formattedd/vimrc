@@ -1,6 +1,10 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
+    " Plug 'tanvirtin/monokai.nvim'
+    Plug 'navarasu/onedark.nvim'
+
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     let g:airline#extensions#tabline#formatter = 'default'
@@ -127,3 +131,12 @@ call plug#begin('~/.config/nvim/plugged')
 "   autocmd Filetype json let g:indentLine_enabled = 0
 
 call plug#end()
+
+
+
+" 'navarasu/onedark.nvim'
+let g:onedark_italic_comment = v:true
+let g:onedark_style = 'darker'
+let g:onedark_transparent_background = 'true'
+let g:onedark_italic_comment = 'true'
+colorscheme onedark
