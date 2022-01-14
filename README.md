@@ -6,10 +6,18 @@
 
 ### 不能连接GitHub时
 ```sh
-vi vimrcs/plugins.vim
-vi plugins/plugin_lsp.vim
-%s/Plug\ \'/Plug \ \'https\:\/\/hub\.fastgit\.org\//g
+# linux
+sed -i s/github.com\\//github.com.cnpmjs.org\\// autoload/plug.vim
+
+# mac
+brew install gnu-sed
+gsed -i s/github.com\\//github.com.cnpmjs.org\\// autoload/plug.vim
 ```
+
+<!-- vi vimrcs/plugins.vim -->
+<!-- vi plugins/plugin_lsp.vim -->
+<!-- %s/Plug\ \'/Plug \ \'https\:\/\/hub\.fastgit\.org\//g -->
+
 
 <!-- #### in arch/manjaro use cliopboard -->
 <!-- ```sh -->
