@@ -1,18 +1,31 @@
-### 配合 https://github.com/formattedd/dotfiles 食用
+## 我的neovim配置
 
-### example
 <!-- ![sample](./img/tty.gif) -->
 <img src="./img/tty.gif" width="1000" />
 
-### 不能连接GitHub时
-```sh
-# linux
-sed -i s/github.com\\//github.com.cnpmjs.org\\// autoload/plug.vim
+### 使用方法
 
-# mac
-brew install gnu-sed
-gsed -i s/github.com\\//github.com.cnpmjs.org\\// autoload/plug.vim
-```
+- 1. 配合 https://github.com/lesssound/dotfiles 使用
+- 2. 独立使用
+
+        ```sh
+        mkdir ~/.dotfiles
+        https://github.com/lesssound/nvim-config ~/.dotfiles
+        cd ~/.dotfiles
+        sh ./installer.sh
+        ```
+
+
+### QA
+- 不能连接GitHub时
+    ```sh
+    # linux
+    sed -i s/github.com\\//github.com.cnpmjs.org\\// autoload/plug.vim
+
+    # mac
+    brew install gnu-sed
+    gsed -i s/github.com\\//github.com.cnpmjs.org\\// autoload/plug.vim
+    ```
 
 <!-- vi vimrcs/plugins.vim -->
 <!-- vi plugins/plugin_lsp.vim -->
