@@ -24,12 +24,6 @@ call plug#begin('~/.config/nvim/plugged')
 
     " Plug 'Chiel92/vim-autoformat'
     Plug 'sbdchd/neoformat'
-    let g:neoformat_enabled_python = ['black']
-    augroup fmt
-      autocmd!
-      autocmd BufWritePre * undojoin | Neoformat
-    augroup END
-    nmap fn :Neoformat <CR> :w! <CR>
 
 
     Plug 'jiangmiao/auto-pairs'
@@ -144,6 +138,14 @@ if !empty(glob("~/.config/nvim/plugged/onedark.nvim/"))
     colorscheme onedark
 endif
 
+if !empty(glob("~/.config/nvim/plugged/neoformat/"))
+    let g:neoformat_enabled_python = ['black']
+    augroup fmt
+      autocmd!
+      autocmd BufWritePre * undojoin | Neoformat
+    augroup END
+    nmap fn :Neoformat <CR> :w! <CR>
+endif
 
 " if filereadable(expand("$HOME/.config/nvim/plugged/wilder.nvim/autoload/wilder.vim"))
 if !empty(glob("~/.config/nvim/plugged/wilder.nvim/"))
