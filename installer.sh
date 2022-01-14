@@ -19,7 +19,7 @@ ConfigNvim(){
     ln -s ~/.dotfiles/nvim/ ~/.config/
 
     mkdir -p ~/.local/share/nvim/site/autoload
-    cp -r ~/.config/nvim/autoload ~/.local/share/nvim/site/
+    ln -s ~/.config/nvim/autoload ~/.local/share/nvim/site/
 
     nvim +PlugInstall +qall
     # nvim -es -u init.vim -i NONE -c "PlugInstall" -c "qa"
