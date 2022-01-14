@@ -63,10 +63,15 @@ call plug#end()
 
 " 'navarasu/onedark.nvim'
 if !empty(glob("~/.config/nvim/plugged/onedark.nvim/"))
-    let g:onedark_italic_comment = v:true
-    let g:onedark_style = 'darker'
-    let g:onedark_transparent_background = 'true'
-    let g:onedark_italic_comment = 'true'
+    let g:onedark_config = {
+      \ 'style': 'darker',
+      \ 'toggle_style_key': '<leader>s',
+      \ 'ending_tildes': v:true,
+      \ 'diagnostics': {
+        \ 'darker': v:true,
+        \ 'background': v:true,
+      \ },
+    \ }
     colorscheme onedark
 endif
 
