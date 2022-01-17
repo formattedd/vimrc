@@ -21,10 +21,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'voldikss/vim-floaterm'
     nmap <Space>t :FloatermNew<CR>
 
-    " Plug 'sheerun/vim-polyglot'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
-    Plug 'dense-analysis/ale'
-    let b:ale_linters = ['mypy']
+    Plug 'sheerun/vim-polyglot'
+    " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
+    " Plug 'dense-analysis/ale'
+    " let b:ale_linters = ['mypy']
     " let b:ale_linters = ['flake8', 'pylint']
     Plug 'preservim/nerdcommenter' " 注释
     Plug 'pechorin/any-jump.vim'
