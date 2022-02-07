@@ -76,8 +76,12 @@ if !empty(glob("~/.config/nvim/plugged/onedark.nvim/"))
 endif
 
 if !empty(glob("~/.config/nvim/plugged/vim-airline/"))
-    let g:airline#extensions#tabline#formatter = 'default'
+    " :bnext
+    " :bprevious
+    " :bfirst
+    " :blast
     let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#formatter = 'jsformatter'
     " let g:airline#extensions#tabline#left_sep = ' '
     " let g:airline#extensions#tabline#left_alt_sep = '|'
     " let g:airline#extensions#tabline#enabled = 1
@@ -88,7 +92,7 @@ if !empty(glob("~/.config/nvim/plugged/vim-airline/"))
     " let g:airline#extensions#tabline#fnametruncate = 16
     " let g:airline#extensions#tabline#fnamecollapse = 2
     " let g:airline#extensions#tabline#buffer_idx_mode = 1
-    let g:airline_theme='molokai'
+    let g:airline_theme='onedark'
 endif
 
 
