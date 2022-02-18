@@ -106,11 +106,13 @@ if !empty(glob("~/.config/nvim/plugged/nerdtree/"))
     let g:NERDTreeDirArrows = 1
     "当打开vim且没有文件时自动打开NERDTree
     " autocmd vimenter * if !argc() | NERDTree | endif
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
     "" 只剩 NERDTree时自动关闭
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    autocmd VimEnter * NERDTree | wincmd p
 
     nmap <Space>n :NERDTreeToggle<CR>
-    nmap <Space>n <ESC> :NERDTreeToggle<CR>
 endif
 
 if !empty(glob("~/.config/nvim/plugged/fzf.vim/"))
