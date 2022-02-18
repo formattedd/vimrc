@@ -135,7 +135,7 @@ endif
 
 " Plug 'sbdchd/neoformat'
 if !empty(glob("~/.config/nvim/plugged/neoformat/"))
-    let g:neoformat_enabled_python = ['black']
+    let g:neoformat_enabled_python = ['black --line-length 120']
     augroup fmt
       autocmd!
       autocmd BufWritePre * undojoin | Neoformat
@@ -182,10 +182,10 @@ if !empty(glob("~/.config/nvim/plugged/wilder.nvim/"))
 endif
 
 
-if !empty(glob("~/.config/nvim/plugged/wilder.nvim/"))
+if !empty(glob("~/.config/nvim/plugged/vim-lsp/"))
     " prabirshrestha/asyncomplete.vim
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
     " inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
     inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() . "\<cr>" : "\<cr>"
