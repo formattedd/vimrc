@@ -1,5 +1,7 @@
 " git@github.com:formateddd/vimrc.git
 
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
+
 " color
 if &term =~ "xterm"
     " SecureCRT versions prior to 6.1.x do not support 4-digit DECSET
