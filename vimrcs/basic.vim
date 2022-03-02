@@ -1,6 +1,7 @@
 " git@github.com:formateddd/vimrc.git
 
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
+" 透明背景
+" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
 
 " color
 if &term =~ "xterm"
