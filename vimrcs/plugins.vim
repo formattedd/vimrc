@@ -1,77 +1,54 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
-    Plug 'mhinz/vim-startify'
-    Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'mhinz/vim-startify'
+Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
-    " Plug 'tanvirtin/monokai.nvim'
-    Plug 'navarasu/onedark.nvim'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+" Plug 'tanvirtin/monokai.nvim'
+Plug 'navarasu/onedark.nvim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-    Plug 'preservim/nerdtree'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
-    " Plug 'Chiel92/vim-autoformat'
-    Plug 'sbdchd/neoformat'
-    Plug 'jiangmiao/auto-pairs'
-    Plug 'ntpeters/vim-better-whitespace'
-    Plug 'voldikss/vim-floaterm'
-    nmap <Space>t :FloatermNew<CR>
+Plug 'Chiel92/vim-autoformat'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'voldikss/vim-floaterm'
+nmap <Space>t :FloatermNew<CR>
 
-    Plug 'sheerun/vim-polyglot'
-    " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
-    " Plug 'dense-analysis/ale'
-    " let b:ale_linters = ['mypy']
-    " let b:ale_linters = ['flake8', 'pylint']
-    Plug 'preservim/nerdcommenter' " 注释
-    Plug 'pechorin/any-jump.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'preservim/nerdcommenter' " 注释
+Plug 'pechorin/any-jump.vim'
 
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'mattn/vim-lsp-settings'
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-    Plug 'github/copilot.vim'
-    " :Copilot setup
+Plug 'github/copilot.vim'
+" :Copilot setup
 
-    " for f in glob('~/.config/nvim/plugins/plugin_*.vim', 0, 1)
-    "     execute 'source' f
-    " endfor
-
-" Plug 'tpope/vim-fugitive'
-" Plug 'airblade/vim-gitgutter'
-" Plug 'terryma/vim-multiple-cursors'
-"   let g:multi_cursor_next_key="\<C-s>"
-" Plug 'suan/vim-instant-markdown'
-" Plug 'tpope/vim-surround'
-" Plug 'Yggdroot/indentLine' " displaying thin vertical lines
-"   支持任意ASCII码，也可以使用特殊字符：¦, ┆, or │ ，但只在utf-8编码下有效
-"   let g:indentLine_char='�'
-"   let g:indentLine_char_list = ['┆']
-"   使indentline生效
-"   let g:indentLine_enabled = 1
-"   let g:indentLine_setColors = 0
-"   Vim
-"   let g:indentLine_color_term = 239
-"   autocmd Filetype json let g:indentLine_enabled = 0
-
+" for f in glob('~/.config/nvim/plugins/plugin_*.vim', 0, 1)
+"     execute 'source' f
+" endfor
 call plug#end()
 
 
 " 'navarasu/onedark.nvim'
 if !empty(glob("~/.config/nvim/plugged/onedark.nvim/"))
     let g:onedark_config = {
-      \ 'style': 'darker',
-      \ 'toggle_style_key': '<leader>s',
-      \ 'ending_tildes': v:true,
-      \ 'diagnostics': {
-        \ 'darker': v:true,
-        \ 'background': v:true,
-      \ },
-    \ }
+                \ 'style': 'darker',
+                \ 'toggle_style_key': '<leader>s',
+                \ 'ending_tildes': v:true,
+                \ 'diagnostics': {
+                    \ 'darker': v:true,
+                    \ 'background': v:true,
+                    \ },
+                    \ }
     colorscheme onedark
 endif
 
@@ -135,15 +112,13 @@ if !empty(glob("~/.config/nvim/plugged/any-jump.vim/"))
     nnoremap <leader>al :AnyJumpLastResults<CR>
 endif
 
-" Plug 'sbdchd/neoformat'
-if !empty(glob("~/.config/nvim/plugged/neoformat/"))
-    let g:neoformat_enabled_python = ['black']
-    augroup fmt
-      autocmd!
-      autocmd BufWritePre * undojoin | Neoformat
-    augroup END
-    nmap fn :Neoformat <CR> :w! <CR>
+if !empty(glob("~/.config/nvim/plugged/vim-autoformat/"))
+    autocmd BufWrite * :Autoformat
+    let g:autoformat_autoindent = 1
+    let g:autoformat_retab = 1
+    let g:autoformat_remove_trailing_spaces = 1
 endif
+
 
 if !empty(glob("~/.config/nvim/plugged/nerdcommenter/"))
     nmap <Space><Space> <plug>NERDCommenterToggle
@@ -172,15 +147,15 @@ if !empty(glob("~/.config/nvim/plugged/wilder.nvim/"))
     call wilder#setup({'modes': [':', '/', '?']})
 
     call wilder#set_option('pipeline', [
-          \   wilder#branch(
-          \     wilder#cmdline_pipeline(),
-          \     wilder#search_pipeline(),
-          \   ),
-          \ ])
+                \   wilder#branch(
+                \     wilder#cmdline_pipeline(),
+                \     wilder#search_pipeline(),
+                \   ),
+                \ ])
 
     call wilder#set_option('renderer', wilder#wildmenu_renderer({
-          \ 'highlighter': wilder#basic_highlighter(),
-          \ }))
+                \ 'highlighter': wilder#basic_highlighter(),
+                \ }))
 endif
 
 
@@ -233,8 +208,8 @@ if !empty(glob("~/.config/nvim/plugged/vim-lsp/"))
     augroup END
 
     set foldmethod=expr
-      \ foldexpr=lsp#ui#vim#folding#foldexpr()
-      \ foldtext=lsp#ui#vim#folding#foldtext()
+                \ foldexpr=lsp#ui#vim#folding#foldexpr()
+                \ foldtext=lsp#ui#vim#folding#foldtext()
     let g:lsp_diagnostics_enabled = 1
     let g:lsp_document_highlight_enabled = 1
 endif
