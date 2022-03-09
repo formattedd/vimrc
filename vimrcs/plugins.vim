@@ -114,7 +114,6 @@ endif
 
 if !empty(glob("~/.config/nvim/plugged/vim-autoformat/"))
     " autocmd BufWrite * :Autoformat
-    autocmd! BufWrite *.py :Autoformat
     let g:autoformat_autoindent = 1
     let g:autoformat_retab = 1
     let g:autoformat_remove_trailing_spaces = 1
@@ -170,9 +169,14 @@ if !empty(glob("~/.config/nvim/plugged/vim-lsp/"))
     imap <c-space> <Plug>(asyncomplete_force_refresh)
     " let g:asyncomplete_auto_popup = 0
     let g:asyncomplete_auto_completeopt = 0
+    let g:lsp_fold_enabled = 1
+    set foldmethod=expr
+                \ foldexpr=lsp#ui#vim#folding#foldexpr()
+                \ foldtext=lsp#ui#vim#folding#foldtext()
+    let g:lsp_diagnostics_enabled = 1
+    let g:lsp_document_highlight_enabled = 1
     set completeopt=menuone,noinsert,noselect,preview
     autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
 
     function! s:on_lsp_buffer_enabled() abort
         setlocal omnifunc=lsp#complete
@@ -208,9 +212,4 @@ if !empty(glob("~/.config/nvim/plugged/vim-lsp/"))
         autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
     augroup END
 
-    set foldmethod=expr
-                \ foldexpr=lsp#ui#vim#folding#foldexpr()
-                \ foldtext=lsp#ui#vim#folding#foldtext()
-    let g:lsp_diagnostics_enabled = 1
-    let g:lsp_document_highlight_enabled = 1
 endif
