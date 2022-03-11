@@ -36,7 +36,7 @@ endfunc
 func! FormatFile()
     exec "w"
     if &filetype == 'python'
-        exec "r !black -q %"
+        exec "r !black -l 120 -q %"
         " exec "r !yapf -i %"
         exec "e"
     elseif &filetype == 'json'

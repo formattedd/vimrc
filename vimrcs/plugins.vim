@@ -168,7 +168,7 @@ if !empty(glob("~/.config/nvim/plugged/vim-lsp/"))
     inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() . "\<cr>" : "\<cr>"
     imap <c-space> <Plug>(asyncomplete_force_refresh)
     " let g:asyncomplete_auto_popup = 0
-    let g:asyncomplete_auto_completeopt = 0
+    let g:asyncomplete_auto_completeopt = 1
     let g:lsp_fold_enabled = 1
     set foldmethod=expr
                 \ foldexpr=lsp#ui#vim#folding#foldexpr()
