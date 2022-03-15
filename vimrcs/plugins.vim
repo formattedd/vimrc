@@ -113,7 +113,7 @@ if !empty(glob("~/.config/nvim/plugged/any-jump.vim/"))
 endif
 
 if !empty(glob("~/.config/nvim/plugged/vim-autoformat/"))
-    " autocmd BufWrite * :Autoformat
+    autocmd BufWrite * :Autoformat
     let g:autoformat_autoindent = 1
     let g:autoformat_retab = 1
     let g:autoformat_remove_trailing_spaces = 1
@@ -200,7 +200,7 @@ if !empty(glob("~/.config/nvim/plugged/vim-lsp/"))
         let g:lsp_diagnostics_enabled = 1
         let g:lsp_format_sync_timeout = 1000
         let g:asyncomplete_auto_popup = 1
-        autocmd! BufWritePre *.go,*.py call execute('LspDocumentFormatSync')
+        " autocmd! BufWritePre *.go,*.py call execute('LspDocumentFormatSync')
         " autocmd BufWritePre <buffer> LspDocumentFormatSync
 
         " refer to doc to add more commands
