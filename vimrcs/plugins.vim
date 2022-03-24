@@ -113,7 +113,7 @@ if !empty(glob("~/.config/nvim/plugged/any-jump.vim/"))
 endif
 
 if !empty(glob("~/.config/nvim/plugged/vim-autoformat/"))
-    autocmd BufWrite * :Autoformat
+    " autocmd BufWrite * :Autoformat
     let g:autoformat_autoindent = 1
     let g:autoformat_retab = 1
     let g:autoformat_remove_trailing_spaces = 1
