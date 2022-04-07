@@ -1,5 +1,6 @@
+let plugin_path='~/.config/nvim/plugged/'
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin(plugin_path)
 
 Plug 'mhinz/vim-startify'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -11,8 +12,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 
 Plug 'Chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
@@ -20,7 +21,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'voldikss/vim-floaterm'
 nmap <Space>t :FloatermNew<CR>
 
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'preservim/nerdcommenter' " 注释
 Plug 'pechorin/any-jump.vim'
 
@@ -39,7 +41,7 @@ call plug#end()
 
 
 " 'navarasu/onedark.nvim'
-if !empty(glob("~/.config/nvim/plugged/onedark.nvim/"))
+if !empty(glob(plugin_path . "onedark.nvim/"))
     let g:onedark_config = {
                 \ 'style': 'darker',
                 \ 'toggle_style_key': '<leader>s',
@@ -52,7 +54,7 @@ if !empty(glob("~/.config/nvim/plugged/onedark.nvim/"))
     colorscheme onedark
 endif
 
-if !empty(glob("~/.config/nvim/plugged/vim-airline/"))
+if !empty(glob(plugin_path . "vim-airline/"))
     " :bnext
     " :bprevious
     " :bfirst
@@ -73,7 +75,7 @@ if !empty(glob("~/.config/nvim/plugged/vim-airline/"))
 endif
 
 
-if !empty(glob("~/.config/nvim/plugged/nerdtree/"))
+if !empty(glob(plugin_path . "nerdtree/"))
     Plug 'preservim/nerdtree'
     let g:NERDTreeWinPos = "right"
     let NERDTreeShowHidden=1
@@ -92,7 +94,7 @@ if !empty(glob("~/.config/nvim/plugged/nerdtree/"))
     nmap <Space>n :NERDTreeToggle<CR>
 endif
 
-if !empty(glob("~/.config/nvim/plugged/fzf.vim/"))
+if !empty(glob(plugin_path . "fzf.vim/"))
     if has("nvim")
         " Escape inside a FZF terminal window should exit the terminal window
         " rather than going into the terminal's normal mode.
@@ -101,7 +103,7 @@ if !empty(glob("~/.config/nvim/plugged/fzf.vim/"))
     nmap <S-f> :Files<CR>
 endif
 
-if !empty(glob("~/.config/nvim/plugged/any-jump.vim/"))
+if !empty(glob(plugin_path . "any-jump.vim/"))
     " Normal mode: Jump to definition under cursor
     nnoremap <leader>j :AnyJump<CR>
     " Visual mode: jump to selected text in visual mode
@@ -112,7 +114,7 @@ if !empty(glob("~/.config/nvim/plugged/any-jump.vim/"))
     nnoremap <leader>al :AnyJumpLastResults<CR>
 endif
 
-if !empty(glob("~/.config/nvim/plugged/vim-autoformat/"))
+if !empty(glob(plugin_path . "vim-autoformat/"))
     " autocmd BufWrite * :Autoformat
     let g:autoformat_autoindent = 1
     let g:autoformat_retab = 1
@@ -120,7 +122,7 @@ if !empty(glob("~/.config/nvim/plugged/vim-autoformat/"))
 endif
 
 
-if !empty(glob("~/.config/nvim/plugged/nerdcommenter/"))
+if !empty(glob(plugin_path . "nerdcommenter/"))
     nmap <Space><Space> <plug>NERDCommenterToggle
     " Add spaces after comment delimiters by default
     let g:NERDSpaceDelims = 1
@@ -143,7 +145,7 @@ endif
 
 " Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 " if filereadable(expand("$HOME/.config/nvim/plugged/wilder.nvim/autoload/wilder.vim"))
-if !empty(glob("~/.config/nvim/plugged/wilder.nvim/"))
+if !empty(glob(plugin_path . "wilder.nvim/"))
     call wilder#setup({'modes': [':', '/', '?']})
 
     call wilder#set_option('pipeline', [
@@ -159,7 +161,7 @@ if !empty(glob("~/.config/nvim/plugged/wilder.nvim/"))
 endif
 
 
-if !empty(glob("~/.config/nvim/plugged/vim-lsp/"))
+if !empty(glob(plugin_path . "vim-lsp/"))
     " prabirshrestha/asyncomplete.vim
     " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
     " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
