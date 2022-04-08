@@ -12,8 +12,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'Chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
@@ -94,13 +94,8 @@ if !empty(glob(plugin_path . "nerdtree/"))
     nmap <Space>n :NERDTreeToggle<CR>
 endif
 
-if !empty(glob(plugin_path . "fzf.vim/"))
-    if has("nvim")
-        " Escape inside a FZF terminal window should exit the terminal window
-        " rather than going into the terminal's normal mode.
-        autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
-    endif
-    nmap <S-f> :Files<CR>
+if !empty(glob(plugin_path . "telescope.nvim/"))
+    nnoremap <S-f> <cmd>Telescope find_files<cr>
 endif
 
 if !empty(glob(plugin_path . "any-jump.vim/"))
