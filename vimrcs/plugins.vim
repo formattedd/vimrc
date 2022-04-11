@@ -76,6 +76,7 @@ endif
 
 if !empty(glob(plugin_path . "./nvim-tree.lua/"))
     autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+    nnoremap <Space>n :NvimTreeToggle<CR>
 
     lua << EOF
     require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
