@@ -5,8 +5,6 @@ call plug#begin(plugin_path)
 Plug 'mhinz/vim-startify'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
-" Plug 'tanvirtin/monokai.nvim'
-Plug 'navarasu/onedark.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -38,20 +36,6 @@ Plug 'github/copilot.vim'
 " endfor
 call plug#end()
 
-
-" 'navarasu/onedark.nvim'
-if !empty(glob(plugin_path . "onedark.nvim/"))
-    let g:onedark_config = {
-                \ 'style': 'darker',
-                \ 'toggle_style_key': '<leader>s',
-                \ 'ending_tildes': v:true,
-                \ 'diagnostics': {
-                    \ 'darker': v:true,
-                    \ 'background': v:true,
-                    \ },
-                    \ }
-    colorscheme onedark
-endif
 
 if !empty(glob(plugin_path . "vim-airline/"))
     " :bnext
@@ -88,7 +72,7 @@ if !empty(glob(plugin_path . "./nvim-tree.lua/"))
     hijack_unnamed_buffer_when_opening = false,
     ignore_buffer_on_setup = false,
     open_on_setup = true,
-    open_on_setup_file = true,
+      -- open_on_setup_file = true,
     open_on_tab = true,
     sort_by = "name",
     update_cwd = false,
