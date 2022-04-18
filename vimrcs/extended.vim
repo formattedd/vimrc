@@ -1,19 +1,38 @@
 "以下是改键
 
-" let mapleader = " "
+" nnoremap <SPACE> <Nop>
+" let mapspace = " "
 
 " autocmd BufWritePre *.py execute 'YAPF'
 "command Formatpy :execute 'r !yapf -i %'
 "command Run :call RunFile()<cr>
 
-
-" nmap <S-V> :vs<CR>
 nmap q :q<CR>
 nmap W :w<CR>
-nmap <Space>v :vs<CR>
-nmap <Space>s :sp<CR>
-map <Space>r <Esc> :call RunFile()<cr>
+nmap <space>v :vs<CR>
+nmap <space>s :sp<CR>
+map <space>r <Esc> :call RunFile()<cr>
 map ff :call FormatFile()<CR>
+
+noremap H 0
+noremap L $
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command W w
+
+inoremap <space><space> <ESC>
+
+" 调整缩进后自动选中，方便再次操作
+vnoremap < <gv
+vnoremap > >gv
+
 
 
 " run python file
@@ -50,26 +69,6 @@ endfunc
 map <F5> :call RepalcePrint() <CR>
 
 set pastetoggle=<F10>
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-noremap H 0
-noremap L $
-
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
-command W w
-
-inoremap jj <ESC>
-
-" 调整缩进后自动选中，方便再次操作
-vnoremap < <gv
-vnoremap > >gv
-
 
 " python2
 " command! JsonFormat :execute '%!python2.7 -m json.tool'
