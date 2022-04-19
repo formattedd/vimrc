@@ -29,9 +29,7 @@ endif
 
 "https://github.com/flazz/vim-colorschemes
 set background=dark
-" colorscheme material
-" colorscheme monokai
-colorscheme onedark
+colorscheme monokai
 let g:airline_theme='onedark'
 
 " Set extra options when running in GUI mode

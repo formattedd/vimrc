@@ -5,6 +5,7 @@ call plug#begin(plugin_path)
 Plug 'mhinz/vim-startify'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
+Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -55,6 +56,11 @@ if !empty(glob(plugin_path . "vim-airline/"))
     " let g:airline#extensions#tabline#fnamecollapse = 2
     " let g:airline#extensions#tabline#buffer_idx_mode = 1
     let g:airline_theme='onedark'
+endif
+
+
+if !empty(glob(plugin_path . "./onedark.vim/"))
+    colorscheme onedark
 endif
 
 
