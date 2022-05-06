@@ -20,6 +20,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'voldikss/vim-floaterm'
 nmap <Space>t :FloatermNew<CR>
 
+Plug 'stevearc/aerial.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'preservim/nerdcommenter' " 注释
 Plug 'pechorin/any-jump.vim'
@@ -178,6 +179,37 @@ auto_open = true,
     }
 EOF
 endif
+
+
+if !empty(glob(plugin_path . "aerial.nvim/"))
+lua << EOF
+require("aerial").setup(
+    {
+        min_width = 30,
+        -- backends = {"lsp", "treesitter", "markdown"}
+        backends = {"lsp", "treesitter"},
+        -- false 是显示所有的图标
+        filter_kind = false,
+        -- 将从 lspkind 和 nvim-web-devicons 中获得图标
+        nerd_font = "auto",
+        -- 何时更新
+        update_events = "TextChanged,InsertLeave",
+        -- 按键映射
+        on_attach = function(bufnr)
+            -- 打开、关闭大纲预览
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
+            -- 移动到上一个/下一个子项目，同 <C-k> 和 <C-j>
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', '{', '<cmd>AerialPrev<CR>', {})
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', '}', '<cmd>AerialNext<CR>', {})
+            -- 移动到上一个/下一个大项目
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
+        end
+    }
+)
+EOF
+endif
+
 
 if !empty(glob(plugin_path . "nvim-treesitter/"))
     lua << EOF
