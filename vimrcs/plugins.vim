@@ -1,9 +1,9 @@
-let plugin_path='~/.config/nvim/plugged/'
+let plug_dir='~/.config/nvim/plugged/'
 
-call plug#begin(plugin_path)
+call plug#begin(plug_dir)
 
 Plug 'mhinz/vim-startify'
-Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
@@ -25,10 +25,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'preservim/nerdcommenter' " 注释
 Plug 'pechorin/any-jump.vim'
 
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'mattn/vim-lsp-settings'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plug 'github/copilot.vim'
 " :Copilot setup
@@ -36,10 +36,22 @@ Plug 'github/copilot.vim'
 " for f in glob('~/.config/nvim/plugins/plugin_*.vim', 0, 1)
 "     execute 'source' f
 " endfor
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
 call plug#end()
 
 
-if !empty(glob(plugin_path . "vim-airline/"))
+if !empty(glob(plug_dir . "vim-airline/"))
     " :bnext
     " :bprevious
     " :bfirst
@@ -60,12 +72,12 @@ if !empty(glob(plugin_path . "vim-airline/"))
 endif
 
 
-if !empty(glob(plugin_path . "./onedark.vim/"))
+if !empty(glob(plug_dir . "./onedark.vim/"))
     colorscheme onedark
 endif
 
 
-if !empty(glob(plugin_path . "./nvim-tree.lua/"))
+if !empty(glob(plug_dir . "./nvim-tree.lua/"))
     autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
     nnoremap <Space>n :NvimTreeToggle<CR>
 
@@ -188,7 +200,7 @@ EOF
 endif
 
 
-if !empty(glob(plugin_path . "aerial.nvim/"))
+if !empty(glob(plug_dir . "aerial.nvim/"))
 lua << EOF
 require("aerial").setup(
     {
@@ -218,7 +230,7 @@ EOF
 endif
 
 
-if !empty(glob(plugin_path . "nvim-treesitter/"))
+if !empty(glob(plug_dir . "nvim-treesitter/"))
     lua << EOF
     require'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all"
@@ -247,11 +259,11 @@ if !empty(glob(plugin_path . "nvim-treesitter/"))
 EOF
 endif
 
-if !empty(glob(plugin_path . "telescope.nvim/"))
+if !empty(glob(plug_dir . "telescope.nvim/"))
     nnoremap <S-f> <cmd>Telescope find_files<cr>
 endif
 
-if !empty(glob(plugin_path . "any-jump.vim/"))
+if !empty(glob(plug_dir . "any-jump.vim/"))
     " Normal mode: Jump to definition under cursor
     nnoremap <leader>aj :AnyJump<CR>
     " Visual mode: jump to selected text in visual mode
@@ -262,7 +274,7 @@ if !empty(glob(plugin_path . "any-jump.vim/"))
     nnoremap <leader>al :AnyJumpLastResults<CR>
 endif
 
-if !empty(glob(plugin_path . "vim-autoformat/"))
+if !empty(glob(plug_dir . "vim-autoformat/"))
     " autocmd BufWrite * :Autoformat
     let g:autoformat_autoindent = 1
     let g:autoformat_retab = 1
@@ -270,7 +282,7 @@ if !empty(glob(plugin_path . "vim-autoformat/"))
 endif
 
 
-if !empty(glob(plugin_path . "nerdcommenter/"))
+if !empty(glob(plug_dir . "nerdcommenter/"))
     nmap <Space><Space> <plug>NERDCommenterToggle
     " Add spaces after comment delimiters by default
     let g:NERDSpaceDelims = 1
@@ -293,73 +305,149 @@ endif
 
 " Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 " if filereadable(expand("$HOME/.config/nvim/plugged/wilder.nvim/autoload/wilder.vim"))
-if !empty(glob(plugin_path . "wilder.nvim/"))
-    call wilder#setup({'modes': [':', '/', '?']})
+" if !empty(glob(plug_dir . "wilder.nvim/"))
+"     call wilder#setup({'modes': [':', '/', '?']})
+"
+"     call wilder#set_option('pipeline', [
+"                 \   wilder#branch(
+"                 \     wilder#cmdline_pipeline(),
+"                 \     wilder#search_pipeline(),
+"                 \   ),
+"                 \ ])
+"
+"     call wilder#set_option('renderer', wilder#wildmenu_renderer({
+"                 \ 'highlighter': wilder#basic_highlighter(),
+"                 \ }))
+" endif
 
-    call wilder#set_option('pipeline', [
-                \   wilder#branch(
-                \     wilder#cmdline_pipeline(),
-                \     wilder#search_pipeline(),
-                \   ),
-                \ ])
 
-    call wilder#set_option('renderer', wilder#wildmenu_renderer({
-                \ 'highlighter': wilder#basic_highlighter(),
-                \ }))
-endif
+" if !empty(glob(plug_dir . "vim-lsp/"))
+"     " prabirshrestha/asyncomplete.vim
+"     " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"     " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"     " inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+"
+"     inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() . "\<cr>" : "\<cr>"
+"     imap <c-space> <Plug>(asyncomplete_force_refresh)
+"     " let g:asyncomplete_auto_popup = 0
+"     let g:asyncomplete_auto_completeopt = 1
+"     let g:lsp_fold_enabled = 1
+"     set foldmethod=expr
+"                 \ foldexpr=lsp#ui#vim#folding#foldexpr()
+"                 \ foldtext=lsp#ui#vim#folding#foldtext()
+"     let g:lsp_diagnostics_enabled = 1
+"     let g:lsp_document_highlight_enabled = 1
+"     set completeopt=menuone,noinsert,noselect,preview
+"     autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+"
+"     function! s:on_lsp_buffer_enabled() abort
+"         setlocal omnifunc=lsp#complete
+"         setlocal signcolumn=yes
+"         if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+"         nmap <buffer> gd <plug>(lsp-definition)
+"         nmap <buffer> gs <plug>(lsp-document-symbol-search)
+"         nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+"         nmap <buffer> gr <plug>(lsp-references)
+"         nmap <buffer> gi <plug>(lsp-implementation)
+"         nmap <buffer> gt <plug>(lsp-type-definition)
+"         nmap <buffer> <leader>rn <plug>(lsp-rename)
+"         nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+"         nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+"         nmap <buffer> K <plug>(lsp-hover)
+"         inoremap <buffer> <expr><c-f> lsp#scroll(+4)
+"         inoremap <buffer> <expr><c-d> lsp#scroll(-4)
+"         nmap <Space>f <plug>(lsp-document-format)
+"
+"         let g:lsp_document_highlight_enabled = 1
+"         let g:lsp_diagnostics_enabled = 1
+"         let g:lsp_format_sync_timeout = 1000
+"         let g:asyncomplete_auto_popup = 1
+"         " autocmd! BufWritePre *.go,*.py call execute('LspDocumentFormatSync')
+"         " autocmd BufWritePre <buffer> LspDocumentFormatSync
+"
+"         " refer to doc to add more commands
+"     endfunction
+"
+"     augroup lsp_install
+"         au!
+"         " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+"         autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+"     augroup END
+"
+" endif
 
 
-if !empty(glob(plugin_path . "vim-lsp/"))
-    " prabirshrestha/asyncomplete.vim
-    " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    " inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+if !empty(glob(plug_dir . "cmp-nvim-lsp/"))
+set completeopt=menu,menuone,noselect
 
-    inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() . "\<cr>" : "\<cr>"
-    imap <c-space> <Plug>(asyncomplete_force_refresh)
-    " let g:asyncomplete_auto_popup = 0
-    let g:asyncomplete_auto_completeopt = 1
-    let g:lsp_fold_enabled = 1
-    set foldmethod=expr
-                \ foldexpr=lsp#ui#vim#folding#foldexpr()
-                \ foldtext=lsp#ui#vim#folding#foldtext()
-    let g:lsp_diagnostics_enabled = 1
-    let g:lsp_document_highlight_enabled = 1
-    set completeopt=menuone,noinsert,noselect,preview
-    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+lua <<EOF
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
 
-    function! s:on_lsp_buffer_enabled() abort
-        setlocal omnifunc=lsp#complete
-        setlocal signcolumn=yes
-        if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-        nmap <buffer> gd <plug>(lsp-definition)
-        nmap <buffer> gs <plug>(lsp-document-symbol-search)
-        nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-        nmap <buffer> gr <plug>(lsp-references)
-        nmap <buffer> gi <plug>(lsp-implementation)
-        nmap <buffer> gt <plug>(lsp-type-definition)
-        nmap <buffer> <leader>rn <plug>(lsp-rename)
-        nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-        nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-        nmap <buffer> K <plug>(lsp-hover)
-        inoremap <buffer> <expr><c-f> lsp#scroll(+4)
-        inoremap <buffer> <expr><c-d> lsp#scroll(-4)
-        nmap <Space>f <plug>(lsp-document-format)
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
 
-        let g:lsp_document_highlight_enabled = 1
-        let g:lsp_diagnostics_enabled = 1
-        let g:lsp_format_sync_timeout = 1000
-        let g:asyncomplete_auto_popup = 1
-        " autocmd! BufWritePre *.go,*.py call execute('LspDocumentFormatSync')
-        " autocmd BufWritePre <buffer> LspDocumentFormatSync
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = 'buffer' },
+    })
+  })
 
-        " refer to doc to add more commands
-    endfunction
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
 
-    augroup lsp_install
-        au!
-        " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-        autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-    augroup END
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
 
+  -- Setup lspconfig.
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+  --   capabilities = capabilities
+  -- }
+EOF
 endif
