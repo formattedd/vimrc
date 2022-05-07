@@ -3,7 +3,6 @@ let plug_dir='~/.config/nvim/plugged/'
 call plug#begin(plug_dir)
 
 Plug 'mhinz/vim-startify'
-" Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
@@ -12,7 +11,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+" nnoremap <S-f> <cmd>Telescope find_files<cr>
+
 
 Plug 'Chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
@@ -68,16 +69,13 @@ if !empty(glob(plug_dir . "vim-airline/"))
     " let g:airline#extensions#tabline#fnametruncate = 16
     " let g:airline#extensions#tabline#fnamecollapse = 2
     " let g:airline#extensions#tabline#buffer_idx_mode = 1
-    let g:airline_theme='onedark'
+    " let g:airline_theme='onedark'
+    let g:airline_theme='monokai'
 endif
 
 
 if !empty(glob(plug_dir . "./onedark.vim/"))
     colorscheme onedark
-endif
-
-if !empty(glob(plug_dir . "telescope.nvim/"))
-    nnoremap <S-f> <cmd>Telescope find_files<cr>
 endif
 
 if !empty(glob(plug_dir . "any-jump.vim/"))
