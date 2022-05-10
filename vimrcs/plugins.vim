@@ -14,13 +14,13 @@ Plug 'nvim-lua/plenary.nvim'
 " Plug 'nvim-telescope/telescope.nvim'
 " nnoremap <S-f> <cmd>Telescope find_files<cr>
 
-
 Plug 'Chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'voldikss/vim-floaterm'
 nmap <Space>t :FloatermNew<CR>
 
+Plug 'airblade/vim-gitgutter'
 Plug 'stevearc/aerial.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'preservim/nerdcommenter' " 注释
