@@ -4,7 +4,7 @@ if !empty(glob(plug_dir . "nvim-treesitter/"))
     lua << EOF
     require'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all"
-    ensure_installed = { "python" },
+    ensure_installed = { "python", "vim" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
