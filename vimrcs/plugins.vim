@@ -2,6 +2,7 @@ let plug_dir='~/.config/nvim/plugged/'
 
 call plug#begin(plug_dir)
 
+Plug 'lewis6991/impatient.nvim'
 Plug 'mhinz/vim-startify'
 
 Plug 'joshdick/onedark.vim'
@@ -35,12 +36,11 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'github/copilot.vim'
 " :Copilot setup
 
-" for f in glob('~/.config/nvim/plugins/plugin_*.vim', 0, 1)
-"     execute 'source' f
-" endfor
-
 call plug#end()
 
+for f in split(glob('~/.dotfiles/nvim/vimrcs/config/*.vim'), '\n')
+    exe 'source' f
+endfor
 
 if !empty(glob(plug_dir . "vim-airline/"))
     " :bnext
@@ -65,6 +65,11 @@ endif
 
 
 if !empty(glob(plug_dir . "./onedark.vim/"))
+    let g:onedark_terminal_italics=1
+    let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ }
+    let g:airline_theme='onedark'
     colorscheme onedark
 endif
 
@@ -86,8 +91,8 @@ if !empty(glob(plug_dir . "vim-translator/"))
     " nmap <silent> <Leader>t <Plug>Translate
     " vmap <silent> <Leader>t <Plug>TranslateV
     " Display translation in a window
-    nmap <silent> <Leader>w <Plug>TranslateW
-    vmap <silent> <Leader>w <Plug>TranslateWV
+    nmap <silent> T <Plug>TranslateW
+    " vmap <silent> T <Plug>TranslateWV
     " Replace the text with translation
     " nmap <silent> <Leader>r <Plug>TranslateR
     " vmap <silent> <Leader>r <Plug>TranslateRV
