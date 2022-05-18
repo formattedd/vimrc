@@ -26,7 +26,7 @@ ConfigNvim(){
     echo "vim plugins install success"
 
     # default python virtualenv
-    pip install neovim black -i https://pypi.tuna.tsinghua.edu.cn/simple
+    pip install better_exceptions neovim black -i https://pypi.tuna.tsinghua.edu.cn/simple
     echo "while copy Chinese , export LC_ALL="zh_CN.UTF-8" "
     echo "Installed the Vim configuration successfully, Enjoy it ! :-)"
 }

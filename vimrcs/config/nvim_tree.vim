@@ -2,7 +2,7 @@ let plug_dir='~/.config/nvim/plugged/'
 
 if !empty(glob(plug_dir . "./nvim-tree.lua/"))
     autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
-    nnoremap <Space>n :NvimTreeToggle<CR>
+    nnoremap <Space>e :NvimTreeToggle<CR>
 
 lua << EOF
 -- setup with all defaults
